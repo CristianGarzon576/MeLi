@@ -8,12 +8,11 @@ export const get = async (url) => {
 };
 
 const handleResponseSuccess = (response) => {
-  const {author} = env;
-  return {...response, author};
+  return {...response};
 };
 
 const handleResponseError = (error) => {
-  console.log(error);
   return error
 }
+
 export default {get};

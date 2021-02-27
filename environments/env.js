@@ -5,7 +5,9 @@ export const env = {
   },
   api: {
     search: 'https://api.mercadolibre.com/sites/MLA/search',
-    item: 'https://api.mercadolibre.com/items/{id}',
-    description: 'https://api.mercadolibre.com/items/{id}/description',
+    item: {
+      baseUrl: 'https://api.mercadolibre.com/items/',
+      description: '/description',
+    }
   }
 };
