@@ -2,11 +2,12 @@ import { getItemInformation } from "../../../services/controllers/item";
 
 export default function Item({author, item}) {
   return (
-    <>
+    <div className="PageContainer">
+      <Header initialState={search}/>
       <div>ItemPage</div>
       <div>Author: {author.name} {author.lastname} </div>
-        <div>{!!item && item.title}</div>
-    </>
+      <div>{!!item && item.title}</div>
+    </div>
   )
 }
 

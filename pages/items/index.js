@@ -1,17 +1,13 @@
+import Header from "../../components/Header/Header";
+import { SearchContainer } from "../../components/SearchContainer/SearchContainer";
 import { searchItems } from "../../services/controllers/search";
 
-export default function Search({author, items, categories}) {
+export default function Search({author, items, categories, search}) {
   return (
-    <>
-      <div>searchPage</div>
-      <div>Author: {author.name} {author.lastname} </div>
-      <div>categories: {categories.map(categorie => (<p key={categorie}> {categorie} </p>))}</div>
-      <div>items: {items.map(item => (
-        <div key={item.id}>
-          {item.title}
-        </div>
-      ))}</div>
-    </>
+    <div className="PageContainer">
+      <Header initialState={search}/>
+      <SearchContainer breadCrumbs={categories} items={items} />
+    </div>
   )
 }
 
@@ -19,6 +15,6 @@ export async function getServerSideProps({params, res, query}) {
   const {search} = query;
   const searchData = await searchItems(search);
   return {
-    props: searchData
+    props: {...searchData, search}
   }
 }

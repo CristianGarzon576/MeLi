@@ -1,0 +1,19 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.header {
+  background: $yellow;
+  @include flex(center, center);
+  .headerContainer {
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+    @include flex(center, center);
+    max-width: 1000px;
+  }
+  .mlLogo {
+    width: 10%;
+    min-width: 60px;
+    @include flex(center, flex-start);
+  }
+}

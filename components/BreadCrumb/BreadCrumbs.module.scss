@@ -1,0 +1,15 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.breadCrumbs {
+  color: $gray;
+  @include flex(center, flex-start);
+  margin: $space-s 0;
+  flex-wrap: wrap;
+  div {
+    @include flex(center, center);
+    &:last-child {
+      color: $dark-gray;
+    }
+  }
+}
