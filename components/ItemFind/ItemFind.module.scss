@@ -1,0 +1,43 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.itemFind {
+  border-bottom: 1px solid $gray;
+  cursor: pointer;
+  @include flex(center, flex-start);
+  &:last-child {
+      border: none;
+  }
+  .imgItemFind {
+    img {
+      width: $search-width;
+      height: $search-width;
+      margin: $space-s;
+    }
+  }
+  .infoItemFind {
+    color: $black;
+    width: 60%;
+    @include flex(center, flex-start, column);
+    .infoItemAdd {
+      @include flex(flex-end, space-between, row);
+      width: 100%;
+      padding-bottom: $space;
+      width: 100%;
+      .infoItemPrice {
+        span {
+          font-size: 24px;
+          padding-right: 16px;
+        }
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+    .infoItemTitle {
+      @include flex(flex-start, flex-start, column);
+      font-size: 18px;
+      width: 100%;
+    }
+  }
+}

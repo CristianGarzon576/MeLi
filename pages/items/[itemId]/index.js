@@ -1,9 +1,10 @@
+import Header from "../../../components/Header/Header";
 import { getItemInformation } from "../../../services/controllers/item";
 
 export default function Item({author, item}) {
   return (
     <div className="PageContainer">
-      <Header initialState={search}/>
+      <Header initialState={''}/>
       <div>ItemPage</div>
       <div>Author: {author.name} {author.lastname} </div>
       <div>{!!item && item.title}</div>
@@ -12,10 +13,12 @@ export default function Item({author, item}) {
 }
 
 export async function getServerSideProps({params, res, query}) {
+  console.log("🚀 ~ file: index.js ~ line 16 ~ getServerSideProps ~ query", query)
+  console.log("🚀 ~ file: index.js ~ line 16 ~ getServerSideProps ~ res", res)
+  console.log("🚀 ~ file: index.js ~ line 16 ~ getServerSideProps ~ params", params)
+  console.log(res);
   const {itemId} = params;
   const {author, item} = await getItemInformation(itemId);
-  console.log("🚀 ~ file: index.js ~ line 16 ~ getServerSideProps ~ item", item)
-  console.log("🚀 ~ file: index.js ~ line 16 ~ getServerSideProps ~ author", author)
   return {
     props: {
       author,
