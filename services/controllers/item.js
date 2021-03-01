@@ -16,7 +16,7 @@ function mappedItemResponse([itemData, descriptionData]) {
   let item = null;
   try {
     const description = 'plain_text' in descriptionData ? descriptionData.plain_text: '';
-    const {id, title, price, currency_id, condition, thumbnail, sold_quantity} = itemData;
+    const {id, title, price, currency_id, condition, thumbnail, sold_quantity, pictures} = itemData;
     const {free_shipping} = itemData.shipping;
     const objectPrice = {
       currency: currency_id,
@@ -27,7 +27,7 @@ function mappedItemResponse([itemData, descriptionData]) {
       id,
       title,
       price: objectPrice,
-      picture: thumbnail,
+      picture: pictures[0].secure_url || thumbnail,
       condition,
       free_shipping,
       sold_quantity,

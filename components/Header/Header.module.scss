@@ -2,7 +2,7 @@
 @import '../../styles/variables.scss';
 
 .header {
-  background: $yellow;
+  background: $accent-background;
   @include flex(center, center);
   .headerContainer {
     width: 90%;

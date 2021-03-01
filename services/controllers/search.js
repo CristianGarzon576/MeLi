@@ -8,6 +8,7 @@ export const searchItems = async (param) => {
 };
 
 const mappedSearchResponse = (response) => {
+  console.log("🚀 ~ file: search.js ~ line 11 ~ mappedSearchResponse ~ response", response)
   let categories;
   let items;
   const author = env.author;

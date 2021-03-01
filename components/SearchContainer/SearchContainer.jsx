@@ -1,14 +1,16 @@
-import styles from './SearchContainer.module.scss';
-
 import BreadCrumbs from '../BreadCrumb/BreadCrumbs';
-import ItemFindContainer from '../ItemFindContainer/ItemFindContainer';
+import ItemFind from '../ItemFind/ItemFind';
+
 
 export const SearchContainer = ({breadCrumbs, items}) => {
-  console.log(items);
   return (
-    <div className={styles.searchContainer}>
+    <div className="wrapperPage">
       <BreadCrumbs breadCrumbs={breadCrumbs}/>
-      <ItemFindContainer items={items} />
+      <div className="card">
+        {items.map((item) => {
+          return <ItemFind key={item.id} item={item}/>
+        })}
+      </div>
     </div>
   );
 };

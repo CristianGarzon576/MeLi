@@ -1,13 +1,14 @@
 import SearchBar from './SearchBar/SearchBar';
 import styles from './Header.module.scss';
+import { MeLiIcon } from '../utilities.components';
 
 export const Header = ({initialState}) => {
-  const meLiLogo = '/assets/Logo_ML.png';
+  
   return (
     <div className={styles.header}>
       <div className={styles.headerContainer}>
         <div className={styles.mlLogo}>
-          <img src={meLiLogo} alt="Logo Mercado Libre"/>
+          <MeLiIcon />
         </div>
         <SearchBar initialState={initialState} />
       </div>

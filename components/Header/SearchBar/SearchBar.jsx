@@ -16,7 +16,6 @@ export const SearchBar = ({initialState=''}) => {
     setQuery(event.target.value);
   };
   const search = preventDefault(() => {
-    console.log(router);
     router.push(`/items?search=${query}`)
   });
   return (

@@ -1,32 +1,25 @@
 import styles from './ItemFind.module.scss';
 import Link from 'next/link';
+import { ConditionItem, FreeShippingIcon, PriceItem } from '../utilities.components';
 
 export const ItemFind = ({item}) => {
-  console.log(item);
-  const iconShipping = '/assets/ic_shipping.png';
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: `${item.price.currency}`,
-    minimumFractionDigits: 2
-  });
-  const price = formatter.format(item.price.amount);
   return (
     <Link href={`/items/${item.id}`}>
       <div className={styles.itemFind}>
         <div className={styles.imgItemFind}>
-          <img src={item.picture} />
+          <img src={item.picture} alt={item.title} />
         </div>
         <div className={styles.infoItemFind}>
           <div className={styles.infoItemAdd}>
             <div className={styles.infoItemPrice}>
-              <span>{price}</span>
-              {!!item.free_shipping && (<img src={iconShipping} alt="free shipping icon" />)}
+              <PriceItem price={item.price} />
+              <FreeShippingIcon freeShipping={item.free_shipping} />
             </div>
             <span>{item.address}</span>
           </div>
           <div className={styles.infoItemTitle}>
             <span>{item.title}</span>
-            <span>{item.condition}</span>
+            <ConditionItem condition={item.condition} />
           </div>
         </div>
       </div>
