@@ -5,7 +5,7 @@ import { ConditionItem, FreeShippingIcon, PriceItem } from '../utilities.compone
 export const ItemFind = ({item}) => {
   return (
     <Link href={`/items/${item.id}`}>
-      <div className={styles.itemFind}>
+      <div className={styles.itemFind} tabIndex="0">
         <div className={styles.imgItemFind}>
           <img src={item.picture} alt={item.title} />
         </div>

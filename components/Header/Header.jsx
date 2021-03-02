@@ -1,6 +1,7 @@
 import SearchBar from './SearchBar/SearchBar';
 import styles from './Header.module.scss';
 import { MeLiIcon } from '../utilities.components';
+import { memo } from 'react';
 
 export const Header = ({initialState}) => {
   
@@ -16,4 +17,4 @@ export const Header = ({initialState}) => {
   );
 };
 
-export default Header;
+export default memo(Header);

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { env } from '../environments/env';
 
 export const get = async (url) => {
   return await axios.get(url)

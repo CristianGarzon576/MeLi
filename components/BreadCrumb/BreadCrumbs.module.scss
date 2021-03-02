@@ -3,14 +3,20 @@
 
 .breadCrumbs {
   color: $gray;
-  @include flex(center, flex-start);
-  margin: $space-s 0;
+  padding: $space-s 0;
   flex-wrap: wrap;
   font-size: 14px;
-  div {
-    @include flex(center, center);
-    &:last-child {
-      color: $dark-gray;
+  background: $ligth-gray;
+  .breadCrumbsWrapper {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    @include flex(center, flex-start);
+    div {
+      @include flex(center, center);
+      &:last-child {
+        color: $dark-gray;
+      }
     }
   }
 }

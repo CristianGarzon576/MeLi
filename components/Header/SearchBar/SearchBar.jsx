@@ -21,7 +21,7 @@ export const SearchBar = ({initialState=''}) => {
   return (
     <div className={styles.searchBar}>
       <form onSubmit={search}>
-        <input type="text" placeholder="Nunca dejes de buscar" value={query} onChange={handleQuery}/>
+        <input type="text" tabIndex="0" placeholder="Nunca dejes de buscar" value={query} onChange={handleQuery}/>
         <button onClick={search} type="submit">
           <img src={searchLogo} alt="search logo"/>
         </button>

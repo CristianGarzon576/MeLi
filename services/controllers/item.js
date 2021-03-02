@@ -1,22 +1,22 @@
 import { env } from '../../environments/env.js';
 import { get } from '../base-services.js';
+import { getCategories } from './category.js';
 
 export async function getItemInformation(itemId) {
   const itemUrl = `${env.api.item.baseUrl}${itemId}`;
   const descriptionUrl = `${itemUrl}${env.api.item.description}`;
   const response = await Promise.all([get(itemUrl), get(descriptionUrl)]);
-  return mappedItemResponse(response);
-
+  return await mappedItemResponse(response);
 }
 
-function mappedItemResponse([itemData, descriptionData]) {
-  console.log("🚀 ~ file: item.js ~ line 13 ~ mappedItemResponse ~ itemData", itemData)
-  console.log("🚀 ~ file: item.js ~ line 13 ~ mappedItemResponse ~ descriptionData", descriptionData)
+async function mappedItemResponse([itemData, descriptionData]) {
   const author = env.author;
   let item = null;
+  let breadCrumbs = [];
   try {
     const description = 'plain_text' in descriptionData ? descriptionData.plain_text: '';
-    const {id, title, price, currency_id, condition, thumbnail, sold_quantity, pictures} = itemData;
+    const {id, title, price, currency_id, condition, thumbnail, sold_quantity, pictures, category_id} = itemData;
+    breadCrumbs = await getCategories(category_id);
     const {free_shipping} = itemData.shipping;
     const objectPrice = {
       currency: currency_id,
@@ -35,7 +35,7 @@ function mappedItemResponse([itemData, descriptionData]) {
     } || null;
   } catch (error) {
   }
-  return {item, author};
+  return {item, author, breadCrumbs};
 }
 
 export default { getItemInformation };

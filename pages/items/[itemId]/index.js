@@ -1,11 +1,9 @@
-import Header from "../../../components/Header/Header";
 import ItemContainer from "../../../components/ItemContainer/ItemContainer";
 import { getItemInformation } from "../../../services/controllers/item";
 
-export default function Item({author, item}) {
+export default function Item({item}) {
   return (
     <div className="PageContainer">
-      <Header initialState={''}/>
       <ItemContainer item={item}/>
     </div>
   )
@@ -13,11 +11,12 @@ export default function Item({author, item}) {
 
 export async function getServerSideProps({params, res, query}) {
   const {itemId} = params;
-  const {author, item} = await getItemInformation(itemId);
+  const {author, item, breadCrumbs} = await getItemInformation(itemId);
   return {
     props: {
       author,
-      item
+      item,
+      breadCrumbs
     }
   }
 }

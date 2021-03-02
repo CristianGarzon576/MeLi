@@ -8,6 +8,7 @@ export const env = {
     item: {
       baseUrl: 'https://api.mercadolibre.com/items/',
       description: '/description',
-    }
+    },
+    category: 'https://api.mercadolibre.com/categories/'
   }
 };
