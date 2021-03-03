@@ -2,35 +2,23 @@ import { env } from '../../environments/env.js';
 import { get } from '../base-services.js';
 import { getCategories } from './category.js';
 
-export async function getItemInformation(itemId) {
+export const getItemInformation = async (itemId) =>  {
   const itemUrl = `${env.api.item.baseUrl}${itemId}`;
   const descriptionUrl = `${itemUrl}${env.api.item.description}`;
   const response = await Promise.all([get(itemUrl), get(descriptionUrl)]);
   return await mappedItemResponse(response);
 }
 
-async function mappedItemResponse([itemData, descriptionData]) {
+export const mappedItemResponse = async ([itemData, descriptionData]) =>  {
   const author = env.author;
   let item = null;
   let breadCrumbs = [];
   try {
-    const description = 'plain_text' in descriptionData ? descriptionData.plain_text: '';
-    const {id, title, price, currency_id, condition, thumbnail, sold_quantity, pictures, category_id} = itemData;
-    breadCrumbs = await getCategories(category_id);
-    const {free_shipping} = itemData.shipping;
-    const objectPrice = {
-      currency: currency_id,
-      amount: price,
-      decimals: 0
-    };
+    const description = 'plain_text' in descriptionData ? descriptionData.plain_text: '';    
+    const mappedItem = mapItem(itemData, true);
+    breadCrumbs = await getCategories(mappedItem.category_id);
     item = {
-      id,
-      title,
-      price: objectPrice,
-      picture: pictures[0].secure_url || thumbnail,
-      condition,
-      free_shipping,
-      sold_quantity,
+      ...mappedItem,
       description
     } || null;
   } catch (error) {
@@ -38,4 +26,29 @@ async function mappedItemResponse([itemData, descriptionData]) {
   return {item, author, breadCrumbs};
 }
 
-export default { getItemInformation };
+
+export const mapItem = (item, isFromItem = false) => {
+  const {id, title, price, currency_id, condition, thumbnail, sold_quantity, pictures, category_id, address} = item;
+  const free_shipping = item.shipping.free_shipping;
+  const state_name = !!address && 'state_name' in address ? address.state_name : '';
+  const pictureToShow = !!isFromItem && !!item && !!pictures && !!pictures.length ? pictures[0].secure_url : thumbnail;
+  const objectPrice = {
+    currency: currency_id,
+    amount: price,
+    decimals: 0
+  };
+  const newItem = {
+    id,
+    title,
+    condition,
+    picture: pictureToShow,
+    price: objectPrice,
+    address: state_name,
+    free_shipping,
+    sold_quantity,
+    category_id
+  };
+  return newItem;
+};
+
+export default { getItemInformation, mapItem };

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { env } from '../../environments/env';
-import { mapItem, searchItems } from '../../services/controllers/search';
+import { mapItem } from '../../services/controllers/item';
+import { searchItems } from '../../services/controllers/search';
 import { createCategory, createItem } from '../../__mock__/data';
 import { categories_response_success, search_response_success } from '../../__mock__/responses';
 

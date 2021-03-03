@@ -1,7 +1,7 @@
 import { env } from "../../environments/env";
 import { get } from "../base-services";
 
-export async function getCategories(CategoryId) {
+export const getCategories = async (CategoryId) => {
   const categoryUrl = `${env.api.category}${CategoryId}`;
   const response = await get(categoryUrl);
   return mappedBreadCrumbs(response);
@@ -16,3 +16,5 @@ export const mappedBreadCrumbs = (response) => {
   }
   return categories;
 };
+
+export default { getCategories };
