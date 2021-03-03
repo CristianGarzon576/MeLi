@@ -9,15 +9,26 @@
     flex-wrap: wrap;
     width: 100%;
     .imageContainer {
+      @include for-size(tablet) {
+        width: 100%;
+      }
       img {
         width: $item-width;
         max-height: $item-width;
         object-fit: contain;
+        @include for-size(tablet) {
+          max-width: $item-width;
+          max-height: $item-width;
+          width: 100%;
+        }
       }
     } 
     .titleContainer {
       @include flex(flex-start, flex-start, column);
       max-width: 230px;
+      @include for-size(tablet) {
+        max-width: 100%;
+      }
       * {
         margin: 16px 0;
       }
