@@ -2,7 +2,7 @@ import { ConditionItem, DescriptionItem, PriceItem } from "../utilities.componen
 import styles from './Item.module.scss';
 
 export const Item = ({item}) => {
-  return(
+  return( !!item &&
     <div className={styles.itemWraper}>
       <div className={styles.infoContainer}>
         <div className={styles.imageContainer}>

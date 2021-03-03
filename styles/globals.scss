@@ -7,6 +7,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: $ligth-gray;
 }
 
 a {
@@ -26,18 +27,12 @@ button:hover {
   cursor: pointer;
 }
 
-.PageContainer {
-  height: calc(100vh - 50px);
-  background: $ligth-gray;
-}
-
 .wrapperPage {
   width: 90%;
   max-width: 1000px;
-  height: 100%;
-  max-height: calc(100vh - 100px);
-  margin: auto;
-  overflow: hidden;
+  max-height: calc(100vh - 150px);
+  margin: 0 auto;
+  overflow: auto;
 }
 
 .card {

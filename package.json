@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -13,5 +14,12 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sass": "^1.32.8"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^7.29.6",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3"
   }
 }

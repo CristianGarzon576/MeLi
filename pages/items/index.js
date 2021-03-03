@@ -3,9 +3,7 @@ import { searchItems } from "../../services/controllers/search";
 
 export default function Search({items}) {
   return (
-    <div className="PageContainer">
-      <SearchContainer items={items} />
-    </div>
+    <SearchContainer items={items} />
   )
 }
 

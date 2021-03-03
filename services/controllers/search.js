@@ -8,7 +8,7 @@ export const searchItems = async (param) => {
   return await mappedSearchResponse(response)
 };
 
-const mapItem = (item) => {
+export const mapItem = (item) => {
   const {id, title, condition, thumbnail, currency_id, price, address} = item;
   const free_shipping = item.shipping.free_shipping;
   const objectPrice = {
@@ -19,23 +19,23 @@ const mapItem = (item) => {
   return {id, title, condition, picture: thumbnail, price: objectPrice, address: address.state_name, free_shipping};
 };
 
-const findCategory = (categories) => {
-  let category = '';
-  const keys = Object.keys(categories);
-  keys.reduce( (acc, curr) => {
-    if (categories[curr] > acc ) {
-      acc = categories[curr];
-      category = curr;
-    }
-    return acc;
-  }, 0);
-  return category;
-};
+// const findCategory = (categories) => {
+//   let category = '';
+//   const keys = Object.keys(categories);
+//   keys.reduce( (acc, curr) => {
+//     if (categories[curr] > acc ) {
+//       acc = categories[curr];
+//       category = curr;
+//     }
+//     return acc;
+//   }, 0);
+//   return category;
+// };
 
-const findCategoryMap = (categories) => {
- const categoryEntries = [...categories.entries()].reduce((a,e) => e[1] > a[1] ? e : a);
- return categoryEntries[0];
-};
+// const findCategoryMap = (categories) => {
+//  const categoryEntries = [...categories.entries()].reduce((a,e) => e[1] > a[1] ? e : a);
+//  return categoryEntries[0];
+// };
 
 const mappedSearchResponse = async (response) => {
   let categories = [];
@@ -82,7 +82,4 @@ const mappedSearchResponse = async (response) => {
   return {author, items, categories};
 };
 
-//Map
-
 export default {searchItems};
-

@@ -3,9 +3,7 @@ import { getItemInformation } from "../../../services/controllers/item";
 
 export default function Item({item}) {
   return (
-    <div className="PageContainer">
-      <ItemContainer item={item}/>
-    </div>
+    <ItemContainer item={item}/>
   )
 }
 

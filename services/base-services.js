@@ -12,6 +12,6 @@ const handleResponseSuccess = (response) => {
 
 const handleResponseError = (error) => {
   return error
-}
+};
 
 export default {get};
